@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/@prisma/app-client"
+}
+
+datasource db {
+  provider = "postgresql"
+  schemas  = ["public"]
+}
+
+model User {
+  id                  String   @id @default(uuid())
+  email               String   @unique
+  passwordHash       String
+  refreshTokenHash   String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  passwordResetTokens PasswordResetToken[]
+
+  @@schema("public")
+}
+
+model PasswordResetToken {
+  id        String   @id @default(uuid())
+  userId    String
+  token     String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@schema("public")
+  @@index([userId])
+}
+
+model Event {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  date        DateTime
+  createdBy   String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@schema("public")
+  @@index([createdBy])
+}
+
