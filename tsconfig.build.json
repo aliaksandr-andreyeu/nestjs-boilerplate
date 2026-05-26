@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@shared": ["dist/libs/shared/index"],
+      "@shared/*": ["dist/libs/shared/src/*"],
+      "@gateway/*": ["dist/apps/gateway/*"],
+      "@auth/*": ["dist/apps/auth-service/*"],
+      "@events/*": ["dist/apps/events-service/*"]
+    }
+  },
+  "exclude": ["node_modules", "test", "**/*spec.ts"]
+}

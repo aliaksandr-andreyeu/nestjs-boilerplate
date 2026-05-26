@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "types": ["jest"],
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2023",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "@shared": ["./libs/shared/index.ts"],
+      "@shared/*": ["./libs/shared/src/*"],
+      "@gateway/*": ["./apps/gateway/src/*"],
+      "@auth/*": ["./apps/auth-service/src/*"],
+      "@events/*": ["./apps/events-service/src/*"],
+      "@prisma/app-client": ["./node_modules/@prisma/app-client"]
+    }
+  },
+  "include": ["apps/**/*", "libs/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

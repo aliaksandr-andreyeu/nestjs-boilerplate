@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@shared": ["./libs/shared/index.ts"],
+      "@shared/*": ["./libs/shared/src/*"],
+      "@gateway/*": ["./apps/gateway/src/*"],
+      "@auth/*": ["./apps/auth-service/src/*"],
+      "@events/*": ["./apps/events-service/src/*"],
+      "@prisma/app-client": ["./node_modules/@prisma/app-client"]
+    }
+  },
+  "exclude": ["**/node_modules"]
+}

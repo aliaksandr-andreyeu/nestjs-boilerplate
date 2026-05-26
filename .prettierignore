@@ -1,0 +1,5 @@
+.husky/
+.vscode/
+/nats-data/
+/node_modules/
+/coverage/

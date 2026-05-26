@@ -1,0 +1,4 @@
+{
+  "*.{ts,tsx}": ["npm run format", "npm run lint", "git add"],
+  "*.{js,jsx,cjs,mjs,json,md,yml,yaml}": ["npm run format", "git add"]
+}
