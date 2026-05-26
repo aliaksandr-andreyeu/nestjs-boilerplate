@@ -1,6 +1,6 @@
 # NestJS Microservices Boilerplate (Monorepo)
 
-Production-ready NestJS monorepo with a Fastify HTTP gateway, NATS-based microservices, Prisma (Postgres), shared library, and Vitest unit/e2e tests.
+Production-ready NestJS monorepo with a Fastify HTTP gateway, NATS-based microservices, Prisma (Supabase Postgres), shared library, and Vitest unit/e2e tests.
 
 ## What’s inside
 
@@ -32,7 +32,7 @@ cp .env.example .env
 
 Required variables:
 
-- **`DATABASE_URL`**: Postgres connection string
+- **`DATABASE_URL`**: Supabase Postgres connection string
 - **`NATS_URL`**: NATS server URL (default: `nats://127.0.0.1:4222`)
 - **`JWT_SECRET`**: JWT signing secret
 - **`COOKIE_SECRET`**: cookie signing secret (gateway)
