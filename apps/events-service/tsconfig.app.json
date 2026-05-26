@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "../../dist/apps/events-service",
+    "rootDir": "src",
+    "paths": {
+      "@shared": ["../../dist/libs/shared/index"],
+      "@shared/*": ["../../dist/libs/shared/src/*"],
+      "@events/*": ["./src/*"],
+      "@prisma/app-client": ["../../node_modules/@prisma/app-client"]
+    }
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["**/*.spec.ts"]
+}

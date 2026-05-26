@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/libs/shared",
+    "rootDir": ".",
+    "declaration": true
+  },
+  "include": ["index.ts", "src/**/*.ts"],
+  "files": ["src/types/fastify.d.ts"],
+  "exclude": ["**/*.spec.ts", "node_modules"]
+}

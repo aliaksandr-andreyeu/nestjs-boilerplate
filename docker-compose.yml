@@ -1,0 +1,21 @@
+services:
+  nats:
+    image: nats:latest
+    command: ['-js', '-sd', '/data']
+    ports:
+      - '4222:4222'
+    volumes:
+      - ./nats-data:/data
+
+  auth-service:
+    build:
+      context: .
+      dockerfile: apps/auth-service/Dockerfile
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - JWT_SECRET=${JWT_SECRET}
+      - NATS_URL=${NATS_URL}
+    depends_on:
+      - nats
+    ports:
+      - '3001:3000'
