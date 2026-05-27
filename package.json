@@ -1,14 +1,19 @@
 {
   "name": "nestjs-boilerplate",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
-  "description": "NestJS microservices boilerplate",
+  "description": "NestJS Microservices Boilerplate with Supabase Postgres, Swagger, NATS, Redis",
   "keywords": [],
   "author": {
     "name": "Aliaksandr Andreyeu",
     "email": "andreyeu.aliaksandr@gmail.com"
   },
   "license": "MIT",
+  "homepage": "https://github.com/aliaksandr-andreyeu/nestjs-boilerplate",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliaksandr-andreyeu/nestjs-boilerplate.git"
+  },
   "scripts": {
     "postinstall": "npm run prisma:generate && npx typesync",
     "prepare": "husky",
