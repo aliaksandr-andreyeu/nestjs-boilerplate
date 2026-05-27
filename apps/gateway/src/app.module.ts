@@ -6,11 +6,13 @@ import { AuthController } from '@gateway/auth.controller';
 import { EventsController } from '@gateway/events.controller';
 import { EventsGateway } from '@gateway/events.gateway';
 import { EventNotificationsController } from '@gateway/event-notifications.controller';
-import { JwtAuthGuard, getNatsServers } from '@shared';
+import { HealthController } from '@gateway/health.controller';
+import { AppCacheModule, JwtAuthGuard, getNatsServers } from '@shared';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
+    AppCacheModule,
     JwtModule.register({
       secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: '5m' }
@@ -28,7 +30,7 @@ import { JwtAuthGuard, getNatsServers } from '@shared';
       }
     ])
   ],
-  controllers: [AuthController, EventsController, EventNotificationsController],
+  controllers: [AuthController, EventsController, EventNotificationsController, HealthController],
   providers: [EventsGateway, JwtAuthGuard]
 })
 export class AppModule {}
