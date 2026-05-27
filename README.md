@@ -21,6 +21,7 @@ Production-ready NestJS monorepo with a Fastify HTTP gateway, NATS-based microse
 - Node.js (recommended via `.nvmrc`)
 - Postgres (local or hosted, e.g. Supabase)
 - NATS server
+- Redis (local via Docker Compose)
 
 ## Environment
 
@@ -34,6 +35,7 @@ Required variables:
 
 - **`DATABASE_URL`**: Supabase Postgres connection string
 - **`NATS_URL`**: NATS server URL (default: `nats://127.0.0.1:4222`)
+- **`REDIS_HOST`**, **`REDIS_PORT`**, **`REDIS_PASSWORD`**: Redis cache (or **`REDIS_URL`**)
 - **`JWT_SECRET`**: JWT signing secret
 - **`COOKIE_SECRET`**: cookie signing secret (gateway)
 - **`NODE_ENV`**: `development` / `production`
@@ -69,10 +71,38 @@ npm run prisma:migrate:deploy
 
 ## Run locally
 
-### Start NATS (Docker)
+### Start infrastructure (Docker)
 
 ```bash
-docker compose up -d nats
+npm run docker:up
+```
+
+Starts **NATS** (`./data/nats`) and **Redis** with password (`./data/redis`). Use the same `REDIS_PASSWORD` in `.env` as in Compose.
+
+Other Docker scripts: `npm run docker:down`, `npm run docker:logs`.
+
+### Build app images (local)
+
+From the repository root (build context must be `.` so Prisma and `libs/` are included):
+
+```bash
+docker build -f apps/gateway/Dockerfile -t nestjs-boilerplate-gateway:local .
+docker build -f apps/auth-service/Dockerfile -t nestjs-boilerplate-auth:local .
+docker build -f apps/events-service/Dockerfile -t nestjs-boilerplate-events:local .
+```
+
+Run a built image (example: gateway). Point env vars at your Postgres, NATS, and Redis (same as `.env`):
+
+```bash
+docker run --rm -p 3000:3000 --env-file .env nestjs-boilerplate-gateway:local
+```
+
+Auth and events are NATS workers (no HTTP port); run them with the same `--env-file` and ensure `NATS_URL` (or `NATS_HOST` + `NATS_PORT`) reaches a reachable NATS server.
+
+If `npm ci` fails when building locally, regenerate the lockfile in strict mode (Docker does not use `legacy-peer-deps` from `.npmrc`):
+
+```bash
+NPM_CONFIG_LEGACY_PEER_DEPS=false npm install
 ```
 
 ### Development (watch mode)

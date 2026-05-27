@@ -16,6 +16,10 @@ export default defineConfig({
     ]
   },
   test: {
+    env: {
+      NODE_ENV: 'test',
+      CACHE_STORE: 'memory'
+    },
     globals: true,
     environment: 'node',
     include: ['apps/**/test/**/*.e2e-spec.ts'],
