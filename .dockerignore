@@ -1,0 +1,39 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+build
+
+# Test output
+coverage
+.nyc_output
+
+# Local runtime data (compose volumes)
+data
+nats-data
+
+# Prisma local artifacts
+prisma/migrations/**/.DS_Store
+
+# Logs
+*.log
+logs
+
+# VCS / editor
+.git
+.github
+.vscode
+.idea
+
+# OS files
+.DS_Store
+
+# Env files (never bake secrets into images)
+.env
+.env.local
+.env.*.local
+
+# Misc
+*.tsbuildinfo
+

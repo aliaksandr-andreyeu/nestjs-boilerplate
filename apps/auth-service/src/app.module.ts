@@ -5,10 +5,12 @@ import { PrismaModule } from '@auth/prisma/prisma.module';
 import { AuthController } from '@auth/auth.controller';
 import { AuthService } from '@auth/auth.service';
 import { HealthController } from '@auth/health.controller';
+import { AppCacheModule } from '@shared';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
+    AppCacheModule,
     JwtModule.register({
       secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: '5m' }

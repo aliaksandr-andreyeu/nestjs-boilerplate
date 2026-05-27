@@ -4,11 +4,12 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
 import { PrismaModule } from '@events/prisma/prisma.module';
 import { EventsController } from '@events/events.controller';
 import { EventsService } from '@events/events.service';
-import { getNatsServers } from '@shared';
+import { AppCacheModule, getNatsServers } from '@shared';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
+    AppCacheModule,
     PrismaModule,
     ClientsModule.register([
       {
