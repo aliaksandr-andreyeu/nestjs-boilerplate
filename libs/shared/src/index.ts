@@ -8,3 +8,5 @@ export { JwtAuthGuard } from './guards/jwt-auth.guard';
 export { AllExceptionsFilter } from './filters/all-exceptions.filter';
 export { dedupeParams } from './utils/dedupe-params';
 export { getNatsServers } from './config/nats.config';
+export { getRedisUrl } from './config/redis.config';
+export { AppCacheModule } from './cache/app-cache.module';
