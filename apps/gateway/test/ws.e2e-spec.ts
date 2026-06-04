@@ -48,13 +48,13 @@ describe('WebSocket Gateway (e2e)', () => {
     await app.close();
   });
 
-  it('должен подключиться с валидным токеном в Sec-WebSocket-Protocol', async () => {
+  it('should connect with a valid token in Sec-WebSocket-Protocol', async () => {
     const ws = await openWebSocket(`ws://127.0.0.1:${port}/ws`, [token]);
     expect(ws.readyState).toBe(WebSocket.OPEN);
     ws.close();
   });
 
-  it('должен отклонить подключение без токена', async () => {
+  it('should reject connection without a token', async () => {
     await expect(openWebSocket(`ws://127.0.0.1:${port}/ws`)).rejects.toThrow(/401/);
   });
 });

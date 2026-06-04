@@ -2,13 +2,13 @@ import { IsEmail, IsString, MinLength } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class RegisterDto {
-  @ApiProperty({ example: 'user@example.com', description: 'Email пользователя', maxLength: 255 })
+  @ApiProperty({ example: 'user@example.com', description: 'User email', maxLength: 255 })
   @IsEmail()
   email!: string;
 
   @ApiProperty({
     example: 'password123',
-    description: 'Пароль (минимум 6, максимум 64 символа)',
+    description: 'Password (minimum 6, maximum 64 characters)',
     minLength: 6,
     maxLength: 64
   })
@@ -18,39 +18,39 @@ export class RegisterDto {
 }
 
 export class LoginDto {
-  @ApiProperty({ example: 'user@example.com', description: 'Email пользователя', maxLength: 255 })
+  @ApiProperty({ example: 'user@example.com', description: 'User email', maxLength: 255 })
   @IsEmail()
   email!: string;
 
-  @ApiProperty({ example: 'password123', description: 'Пароль', minLength: 6, maxLength: 64 })
+  @ApiProperty({ example: 'password123', description: 'Password', minLength: 6, maxLength: 64 })
   @IsString()
   password!: string;
 }
 
 export class ResetPasswordDto {
-  @ApiProperty({ description: 'Токен сброса пароля' })
+  @ApiProperty({ description: 'Password reset token' })
   @IsString()
   token!: string;
 
-  @ApiProperty({ description: 'Новый пароль', minLength: 6, maxLength: 64 })
+  @ApiProperty({ description: 'New password', minLength: 6, maxLength: 64 })
   @MinLength(6)
   @IsString()
   newPassword!: string;
 }
 
 export class ChangePasswordDto {
-  @ApiProperty({ description: 'Старый пароль', minLength: 6, maxLength: 64 })
+  @ApiProperty({ description: 'Old password', minLength: 6, maxLength: 64 })
   @IsString()
   oldPassword!: string;
 
-  @ApiProperty({ description: 'Новый пароль', minLength: 6, maxLength: 64 })
+  @ApiProperty({ description: 'New password', minLength: 6, maxLength: 64 })
   @MinLength(6)
   @IsString()
   newPassword!: string;
 }
 
 export class ForgotPasswordDto {
-  @ApiProperty({ example: 'user@example.com', description: 'Email пользователя' })
+  @ApiProperty({ example: 'user@example.com', description: 'User email' })
   @IsEmail()
   email!: string;
 }
