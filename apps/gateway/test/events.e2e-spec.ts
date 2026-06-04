@@ -41,7 +41,7 @@ describe('EventsController (e2e)', () => {
     token = jwtService.sign({ sub: 'user1', email: 'test@test.com' }, { expiresIn: '5m' });
   });
 
-  it('POST /events (с токеном) создаёт событие', () => {
+  it('POST /events (with token) creates an event', () => {
     return request(app.getHttpServer())
       .post('/events')
       .set('Authorization', `Bearer ${token}`)
@@ -52,7 +52,7 @@ describe('EventsController (e2e)', () => {
       });
   });
 
-  it('POST /events без токена → 403', () => {
+  it('POST /events without token → 403', () => {
     return request(app.getHttpServer()).post('/events').send({}).expect(403);
   });
 

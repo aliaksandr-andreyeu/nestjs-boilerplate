@@ -49,7 +49,7 @@ describe('AuthController (e2e)', () => {
       });
   });
 
-  it('/auth/login (POST) должен установить refresh cookie', () => {
+  it('/auth/login (POST) should set refresh cookie', () => {
     return request(app.getHttpServer())
       .post('/auth/login')
       .send({ email: 'e2e@test.com', password: '123456' })
