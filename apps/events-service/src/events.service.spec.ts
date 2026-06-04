@@ -1,7 +1,14 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { Test, TestingModule } from '@nestjs/testing';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { EventsService } from '@events/events.service';
 import { PrismaService } from '@events/prisma/prisma.service';
+
+const mockCache = {
+  get: vi.fn().mockResolvedValue(undefined),
+  set: vi.fn().mockResolvedValue(undefined),
+  del: vi.fn().mockResolvedValue(undefined)
+};
 
 const mockPrisma = {
   event: {
@@ -19,7 +26,11 @@ describe('EventsService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [EventsService, { provide: PrismaService, useValue: mockPrisma }]
+      providers: [
+        EventsService,
+        { provide: PrismaService, useValue: mockPrisma },
+        { provide: CACHE_MANAGER, useValue: mockCache }
+      ]
     }).compile();
 
     service = module.get<EventsService>(EventsService);
