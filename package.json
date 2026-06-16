@@ -96,7 +96,7 @@
     "@types/bcrypt": "~6.0.0",
     "@types/express": "^5.0.0",
     "@types/jest": "^30.0.0",
-    "@types/node": "^24.0.0",
+    "@types/node": "^24.13.2",
     "@types/pg": "^8.20.0",
     "@types/source-map-support": "~0.5.10",
     "@types/supertest": "^7.0.0",
