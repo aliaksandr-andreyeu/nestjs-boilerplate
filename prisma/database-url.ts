@@ -5,7 +5,7 @@ config({ path: path.resolve(process.cwd(), '.env') });
 
 /** URL for migrate; a stub is enough for generate if .env is not set yet */
 export function getDatabaseUrl(): string {
-  return (
-    process.env.DATABASE_URL ?? 'postgresql://postgres:change-me-postgres-password@127.0.0.1:5432/nestjs_boilerplate'
-  );
+  const url = process.env.DATABASE_URL;
+  if (!url) throw new Error('DATABASE_URL environment variable is required');
+  return url;
 }
