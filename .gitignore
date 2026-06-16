@@ -7,6 +7,7 @@
 /libs/shared/**/*.js
 /libs/shared/**/*.js.map
 /libs/shared/**/*.d.ts
+!/libs/shared/src/types/fastify.d.ts
 /libs/shared/**/*.d.ts.map
 
 # Logs
