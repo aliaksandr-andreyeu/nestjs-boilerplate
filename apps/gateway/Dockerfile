@@ -15,4 +15,7 @@ WORKDIR /app
 ENV NODE_ENV=production
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/dist ./dist
-CMD ["node","dist/apps/gateway/main.js"]
+COPY --from=builder /app/prisma ./prisma
+COPY --from=builder /app/prisma.config.ts ./prisma.config.ts
+EXPOSE 3000
+CMD ["sh","-c","npx prisma migrate deploy --config prisma.config.ts && node dist/apps/gateway/main.js"]

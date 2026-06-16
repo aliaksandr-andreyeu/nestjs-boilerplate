@@ -2,7 +2,7 @@
   "name": "nestjs-boilerplate",
   "version": "0.1.0",
   "private": true,
-  "description": "NestJS Microservices Boilerplate with Supabase Postgres, Swagger, NATS, Redis",
+  "description": "NestJS Microservices Boilerplate with Postgres, Swagger, NATS, Redis",
   "keywords": [],
   "author": {
     "name": "Aliaksandr Andreyeu",
