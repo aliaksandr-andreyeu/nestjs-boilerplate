@@ -1,6 +1,6 @@
 FROM node:22-slim AS deps
 WORKDIR /app
-COPY package*.json ./
+COPY package*.json .npmrc ./
 RUN npm ci --ignore-scripts
 
 FROM node:22-slim AS builder
