@@ -3,7 +3,7 @@ import path from 'node:path';
 
 config({ path: path.resolve(process.cwd(), '.env') });
 
-/** URL для migrate; для generate достаточно заглушки, если .env ещё нет */
+/** URL for migrate; a stub is enough for generate if .env is not set yet */
 export function getDatabaseUrl(): string {
-  return process.env.DATABASE_URL ?? 'postgresql://postgres:postgres@localhost:5432/nestjs_boilerplate';
+  return process.env.DATABASE_URL ?? 'postgresql://localhost:5432/postgres';
 }
