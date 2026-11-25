@@ -108,7 +108,7 @@
     "eslint-plugin-prettier": "^5.2.2",
     "globals": "^17.12.0",
     "husky": "^9.1.7",
-    "jest": "^30.4.2",
+    "jest": "^30.5.2",
     "lint-staged": "^16.4.0",
     "nats-cli": "^1.2.0",
     "prettier": "^3.9.0",
